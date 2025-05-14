@@ -21,7 +21,6 @@ public class MainActivity extends Activity {
         mWebView.setWebViewClient(new MyWebViewClient());
          mWebView.loadUrl("https://www.dtech-services.co.za");
 
-        // LOCAL RESOURCE
         // mWebView.loadUrl("file:///android_asset/index.html");
     }
 
