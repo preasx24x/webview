@@ -31,7 +31,6 @@ public class MainActivity extends Activity {
             }
         });
 
-        // Load your website
         mWebView.loadUrl("https://www.dtech-services.co.za");
     }
 
