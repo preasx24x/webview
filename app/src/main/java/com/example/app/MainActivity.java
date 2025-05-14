@@ -19,8 +19,6 @@ public class MainActivity extends Activity {
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         mWebView.setWebViewClient(new MyWebViewClient());
-
-        // REMOTE RESOURCE
          mWebView.loadUrl("https://www.dtech-services.co.za");
 
         // LOCAL RESOURCE
