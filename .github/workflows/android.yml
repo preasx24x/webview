@@ -5,8 +5,7 @@ on:
     branches: [ master ]
 
 permissions:
-  contents: read
-  actions: read
+  contents: write
 
 jobs:
   build:
@@ -29,13 +28,15 @@ jobs:
       - name: Build debug APK
         run: ./gradlew assembleDebug
 
-      - name: Zip APK
+      - name: Copy APK to repo root
         run: |
-          cd app/build/outputs/apk/debug
-          zip -r webview-app.zip app-debug.apk
+          mkdir -p release
+          cp app/build/outputs/apk/debug/app-debug.apk release/webview-app.apk
 
-      - name: Upload APK as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: webview-app
-          path: app/build/outputs/apk/debug/webview-app.zip
+      - name: Commit & push APK
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add release/webview-app.apk
+          git commit -m "Add built APK"
+          git push
